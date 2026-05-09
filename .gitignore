@@ -5,3 +5,5 @@ __pycache__/
 .venv/
 venv/
 *.pkl
+artifacts/similarity.pkl
+artifacts/movie_dict.pkl
