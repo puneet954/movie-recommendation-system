@@ -289,9 +289,10 @@ def load_data():
         gdown.download(
             'https://drive.google.com/uc?id=1-YnbtpA0lQP4BpaZNBVaBaTRHOmCeeTf',
             similarity_path,
-            quiet=False
+            quiet=False,
             fuzzy=True
         )
+        
     
     movies_dict = pickle.load(open(movie_dict_path, 'rb'))
     movies = pd.DataFrame(movies_dict)
