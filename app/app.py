@@ -263,11 +263,37 @@ div.stButton > button:active { transform: translateY(0); }
 
 
 # ── Data loading ──────────────────────────────────────────────────────────────
+import os
+import gdown
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARTIFACTS_DIR = os.path.join(BASE_DIR, '..', 'artifacts')
+
 @st.cache_resource
 def load_data():
-    movies_dict = pickle.load(open('../artifacts/movie_dict.pkl', 'rb'))
-    similarity = pickle.load(open('../artifacts/similarity.pkl', 'rb'))
+    os.makedirs(ARTIFACTS_DIR, exist_ok=True)
+    
+    movie_dict_path = os.path.join(ARTIFACTS_DIR, 'movie_dict.pkl')
+    similarity_path = os.path.join(ARTIFACTS_DIR, 'similarity.pkl')
+    
+    if not os.path.exists(movie_dict_path):
+        gdown.download(
+            'https://drive.google.com/uc?id=1luM9VcjOA7YyoANGd60ed0fi95P31VN3',
+            movie_dict_path,
+            quiet=False
+        )
+    
+    if not os.path.exists(similarity_path):
+        gdown.download(
+            'https://drive.google.com/uc?id=1-YnbtpA0lQP4BpaZNBVaBaTRHOmCeeTf',
+            similarity_path,
+            quiet=False
+        )
+    
+    movies_dict = pickle.load(open(movie_dict_path, 'rb'))
     movies = pd.DataFrame(movies_dict)
+    similarity = pickle.load(open(similarity_path, 'rb'))
     return movies, similarity
 
 movies, similarity = load_data()
@@ -391,3 +417,5 @@ st.markdown(
     '<div class="footer">CINEMATCH &nbsp;·&nbsp; POWERED BY TMDB & IMDB &nbsp;·&nbsp; 2025</div>',
     unsafe_allow_html=True
 )
+
+
