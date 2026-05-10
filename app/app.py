@@ -279,15 +279,15 @@ def load_data():
     
     if not os.path.exists(movie_dict_path):
         gdown.download(
-            'https://drive.google.com/uc?id=1luM9VcjOA7YyoANGd60ed0fi95P31VN3',
-            movie_dict_path,
+            id='1luM9VcjOA7YyoANGd60ed0fi95P31VN3',
+            output=movie_dict_path,
             quiet=False
         )
     
     if not os.path.exists(similarity_path):
         gdown.download(
-            'https://drive.google.com/uc?id=1-YnbtpA0lQP4BpaZNBVaBaTRHOmCeeTf',
-            similarity_path,
+            id='1-YnbtpA0lQP4BpaZNBVaBaTRHOmCeeTf',
+            output=similarity_path,
             quiet=False
         )
         
