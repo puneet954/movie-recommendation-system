@@ -281,7 +281,8 @@ def load_data():
         gdown.download(
             'https://drive.google.com/uc?id=1luM9VcjOA7YyoANGd60ed0fi95P31VN3',
             movie_dict_path,
-            quiet=False
+            quiet=False,
+            fuzzy=True
         )
     
     if not os.path.exists(similarity_path):
@@ -289,6 +290,7 @@ def load_data():
             'https://drive.google.com/uc?id=1-YnbtpA0lQP4BpaZNBVaBaTRHOmCeeTf',
             similarity_path,
             quiet=False
+            fuzzy=True
         )
     
     movies_dict = pickle.load(open(movie_dict_path, 'rb'))
